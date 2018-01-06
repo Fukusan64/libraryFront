@@ -1,24 +1,42 @@
 <template>
-  <v-toolbar dark app fixed clipped-left color="indigo">
-    <v-toolbar-side-icon @click.stop="navigationDrawerToggle"></v-toolbar-side-icon>
-    <v-toolbar-title>{{pageTitle}}</v-toolbar-title>
+  <v-toolbar
+    app
+    color="blue darken-3"
+    dark
+    clipped-left
+    fixed
+    extended
+  >
+  <v-toolbar-title>
+    Prolab Library Manager
+  </v-toolbar-title>
+  <v-spacer></v-spacer>
+    <v-text-field
+      light
+      solo
+      clearable
+      slot="extension"
+      style="width: 100%;"
+      prepend-icon="search"
+      placeholder="Search"
+      v-model="keyWord"
+    ></v-text-field>
   </v-toolbar>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-
-const { mapGetters } = createNamespacedHelpers('page');
-const { mapMutations } = createNamespacedHelpers('navigationDrawer');
 export default {
   name: 'AppToolBar',
-  methods: {
-    ...mapMutations({
-      navigationDrawerToggle: 'toggle',
-    }),
-  },
   computed: {
-    ...mapGetters(['pageTitle']),
+    keyWord: {
+      get() {
+        return this.$store.state.search.keyWord;
+      },
+      set(value) {
+        this.$store.commit('search/updateKeyWord', value);
+      },
+    },
   },
 };
+
 </script>
