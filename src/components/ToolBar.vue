@@ -5,7 +5,6 @@
     dark
     clipped-left
     fixed
-    extended
   >
   <v-toolbar-title>
     Prolab Library Manager
