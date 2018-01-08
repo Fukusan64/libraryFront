@@ -4,7 +4,7 @@
   <v-expansion-panel expand>
     <v-expansion-panel-content v-for="(item,i) in 100" :key="i">
       <v-layout wrap align-baseline　slot="header">
-        {{["海苔食ってノリノリ", "ネジ切ってねじねじ", "キジでも分かる桃の割り方", "鬼退治入門"][i % 4]}}
+        {{["海苔食ってノリノリ", "ネジ切ってねじねじ", "キジでも分かる桃の割り方", "鬼退治入門", "鶴でも分かる機織り機入門"][i % 5]}}
         <v-spacer></v-spacer>
         <v-chip disabled　small outline v-if="Math.random() > 0.5">貸出中</v-chip>
         <v-chip disabled　small v-else outline color="green">貸出可能</v-chip>
