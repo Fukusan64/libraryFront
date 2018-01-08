@@ -16,9 +16,8 @@
       solo
       clearable
       slot="extension"
-      style="width: 100%;"
       prepend-icon="search"
-      placeholder="Search"
+      placeholder="Search(未実装だよ〜)"
       v-model="keyWord"
     ></v-text-field>
   </v-toolbar>
