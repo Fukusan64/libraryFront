@@ -2,12 +2,13 @@
   <v-layout row justify-center>
   <div d-flex id="list" class="mt-2">
   <v-expansion-panel expand>
-    <v-expansion-panel-content v-for="(item,i) in 100" :key="i">
+    <v-expansion-panel-content hide-actions v-for="(item,i) in items" :key="i">
       <v-layout wrap align-baseline　slot="header">
-        {{["海苔食ってノリノリ", "ネジ切ってねじねじ", "キジでも分かる桃の割り方", "鬼退治入門", "鶴でも分かる機織り機入門"][i % 5]}}
+        <div class="title">
+          <p>{{item.title}}</p>
+        </div>
         <v-spacer></v-spacer>
-        <v-chip disabled　small outline v-if="Math.random() > 0.5">貸出中</v-chip>
-        <v-chip disabled　small v-else outline color="green">貸出可能</v-chip>
+        <v-btn class="btn" v-on:click.stop="click">{{}}</v-btn>
       </v-layout>
       <v-card>
         <v-card-text class="grey lighten-3">
@@ -26,11 +27,27 @@
 <script>
 
 export default {
+  methods: {
+    click: () => {},
+  },
 };
 </script>
 <style scoped>
   #list{
     width: 100%;
     max-width: 800px;
+    overflow: hidden;
+  }
+  .title{
+    width: 55%;
+  }
+  .title > p{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .btn{
+    width: 50px;
+    max-width: 35%;
   }
 </style>

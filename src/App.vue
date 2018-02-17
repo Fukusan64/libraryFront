@@ -2,20 +2,20 @@
   <v-app id="inspire">
     <app-tool-bar></app-tool-bar>
     <v-content app>
-      <books-data-list></books-data-list>
+      <books-list></books-list>
     </v-content>
   </v-app>
 </template>
 
 <script>
 import AppToolBar from '@/components/ToolBar';
-import BooksDataList from '@/components/BooksDataList';
+import BooksList from '@/components/BooksList';
 
 export default {
   name: 'app',
   components: {
     AppToolBar,
-    BooksDataList,
+    BooksList,
   },
 };
 </script>
