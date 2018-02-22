@@ -27,8 +27,15 @@
 <script>
 
 export default {
+  created() {
+    this.$store.dispatch('bookList/getBookList');
+  },
   methods: {
     click: () => {},
+  computed: {
+    items() {
+      return this.$store.state.bookList.books;
+    },
   },
 };
 </script>
