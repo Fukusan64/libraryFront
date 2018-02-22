@@ -2,7 +2,7 @@
   <v-layout row justify-center>
   <div d-flex id="list" class="mt-2">
   <v-expansion-panel expand>
-    <v-expansion-panel-content hide-actions v-for="(item,i) in items" :key="i">
+    <v-expansion-panel-content hide-actions v-for="(item,i) in filter(items)" :key="i">
       <v-layout wrap align-baseline　slot="header">
         <div class="title">
           <p>{{item.title}}</p>
@@ -32,6 +32,15 @@ export default {
   },
   methods: {
     click: () => {},
+    filter(items) {
+      return items.filter((item) => {
+        const keyWordIndex = item.title.indexOf(
+          this.$store.state.search.keyWord,
+        );
+        return keyWordIndex !== -1;
+      });
+    },
+  },
   computed: {
     items() {
       return this.$store.state.bookList.books;
