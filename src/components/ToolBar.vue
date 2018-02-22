@@ -16,7 +16,7 @@
       clearable
       slot="extension"
       prepend-icon="search"
-      placeholder="Search(未実装だよ〜)"
+      placeholder="Search"
       v-model="keyWord"
     ></v-text-field>
   </v-toolbar>
