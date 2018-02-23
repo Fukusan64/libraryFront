@@ -1,8 +1,12 @@
 <template>
-  <v-layout row justify-center>
+  <v-layout row justify-center v-if="hitItems.length != 0 || !hasLoad">
   <div d-flex id="list" class="mt-2">
   <v-expansion-panel expand>
-    <v-expansion-panel-content hide-actions v-for="(item,i) in filter(items)" :key="i">
+    <v-expansion-panel-content
+      hide-actions
+      v-for = "(item,i) in hitItems"
+      :key = "i"
+    >
       <v-layout wrap align-baseline　slot="header">
         <div class="title">
           <p>{{item.title}}</p>
@@ -23,8 +27,12 @@
   </v-expansion-panel>
   </div>
   </v-layout>
+  <main id="notfound" v-else>
+    <img src="../assets/not-found.png">
+  </main>
 </template>
 <script>
+import { mapState } from 'vuex';
 
 export default {
   created() {
@@ -32,18 +40,18 @@ export default {
   },
   methods: {
     click: () => {},
-    filter(items) {
-      return items.filter((item) => {
+  computed: {
+    ...mapState('bookList', {
+      hasLoad: 'hasLoad',
+      items: 'books',
+    }),
+    hitItems() {
+      return this.items.filter((item) => {
         const keyWordIndex = item.title.indexOf(
           this.$store.state.search.keyWord,
         );
         return keyWordIndex !== -1;
       });
-    },
-  },
-  computed: {
-    items() {
-      return this.$store.state.bookList.books;
     },
   },
 };
@@ -53,6 +61,15 @@ export default {
     width: 100%;
     max-width: 800px;
     overflow: hidden;
+  }
+  #notfound{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align:center;
+  }
+  #notfound > img{
+    max-width: 100%;
   }
   .title{
     width: 55%;
