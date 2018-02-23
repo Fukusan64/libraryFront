@@ -20,15 +20,17 @@ const bookList = {
   namespaced: true,
   state: {
     books: [],
+    hasLoad: false,
   },
   mutations: {
-    addBooks(state, booksDataArray) {
+    setBooks(state, booksDataArray) {
       state.books = booksDataArray;
+      state.hasLoad = true;
     },
   },
   actions: {
     async getBookList({ commit }) {
-      commit('addBooks', await api.getBookList());
+      commit('setBooks', await api.getBookList());
     },
   },
 };
