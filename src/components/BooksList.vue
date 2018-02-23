@@ -27,9 +27,9 @@
   </v-expansion-panel>
   </div>
   </v-layout>
-  <main id="notfound" v-else>
+  <div id="notfound" v-else>
     <img src="../assets/not-found.png">
-  </main>
+  </div>
 </template>
 <script>
 import { mapState } from 'vuex';
